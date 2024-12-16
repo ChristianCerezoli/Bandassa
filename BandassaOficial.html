@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandassa Haja Luz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Fonte global */
+    body {
+      font-family: 'Fraunces', serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Tema escuro */
+    body.dark-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+
+    /* Header */
+    header {
+      background-color: #552583;
+      color: #FDB927;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode header {
+      background-color: #552583;
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    header .theme-toggle {
+      margin-left: 0.5rem;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: white;
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+
+    body.dark-mode header .theme-toggle {
+      color: #e2e8f0;
+    }
+
+    header .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Dropdown de repertório */
+    header .dropdown {
+      margin-top: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    header .dropdown button {
+      background-color: #FDB927;
+      border: none;
+      border-radius: 4px;
+      color: #552583;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode header .dropdown button {
+      background-color: #FDB927;
+      color: #552583;
+    }
+
+    header .dropdown button:hover {
+      background-color: #552583;
+      color: #FDB927;
+      transform: scale(1.05);
+    }
+
+    header .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #FDB927;
+      min-width: 160px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 4px;
+    }
+
+    body.dark-mode header .dropdown-content {
+      background-color: #FDB927;
+      color: #552583;
+    }
+
+    header .dropdown-content a {
+      color: #333;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode header .dropdown-content a {
+      color: #552583;
+    }
+
+    header .dropdown-content a:hover {
+      background-color: #552583;
+      color: #FDB927;
+    }
+
+    header .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Títulos */
+    .titulo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 8rem;
+      margin-bottom: 1rem;
+      color: #552583;
+      text-align: center;
+    }
+
+    body.dark-mode .titulo {
+      color: #FDB927;
+    }
+
+    /* Botões de instrumentos */
+    .instrument-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .instrument-buttons button {
+      background-color: #FDB927;
+      border: none;
+      border-radius: 4px;
+      color: #552583;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .instrument-buttons button {
+      background-color: #FDB927;
+      color: #552583;
+    }
+
+    .instrument-buttons button:hover {
+      background-color: #552583;
+      color: #FDB927;
+      transform: scale(1.05);
+    }
+
+    /* Estilo de acordes */
+    .acorde {
+      font-weight: bold;
+      color: #552583;
+      font-family: 'Fraunces', serif;
+    }
+
+    body.dark-mode .acorde {
+      color: #FDB927;
+    }
+
+    pre {
+      font-family: 'Fraunces', serif;
+      margin: 0 1rem;
+      padding: 1rem;
+      background-color: transparent;
+      color: #000000;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode pre {
+      color: #ffffff;
+    }
+
+    /* Rodapé */
+    footer {
+      margin-top: 2rem;
+      background-color: #552583;
+      color: #FDB927;
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+    }
+
+    body.dark-mode footer {
+      background-color: #552583;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Bandassa Haja Luz
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">💡</button>
+    </div>
+    <div class="dropdown">
+      <button>Repertório</button>
+      <div class="dropdown-content">
+        <a href="#tudo-e-teu">Tudo é Teu</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="titulo" id="tudo-e-teu">Tudo é Teu</div>
+    <div class="instrument-buttons">
+      <button onclick="window.open('https://www.youtube.com/watch?v=link_para_violao', '_blank')">Violão</button>
+      <button onclick="window.open('https://www.youtube.com/watch?v=link_para_guitarra', '_blank')">Guitarra</button>
+      <button onclick="window.open('https://www.youtube.com/watch?v=link_para_baixo', '_blank')">Baixo</button>
+      <button onclick="window.open('https://www.youtube.com/watch?v=link_para_bateria', '_blank')">Bateria</button>
+    </div>
+    <pre>
+Tom: <span class="acorde">G</span>  Compasso: <span class="acorde">4/4</span>  bpm: <span class="acorde">70</span>
+Primeira frase: "Tudo o que sou entrego a Ti."
+    </pre>
+  </main>
+
+  <footer>
+    © 2024 Bandassa. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDarkMode = body.classList.contains('dark-mode');
+      themeToggle.textContent = isDarkMode ? '💡' : '💡';
+    });
+  </script>
+</body>
+</html>
